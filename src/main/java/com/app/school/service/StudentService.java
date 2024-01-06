@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.app.school.comman.APIResponse;
-import com.app.school.dto.StudentDto;
+
 import com.app.school.entity.Login;
 import com.app.school.entity.Staffes;
 import com.app.school.entity.Student;
@@ -42,6 +42,9 @@ public class StudentService {
 
 		log.setEmail(student.getEmail());
 		log.setPassword(student.getPassword());
+		log.setUserId(student.getStuId());
+		log.setRole("Student");
+
 		loginRepository.save(log);
 		return "POST";
 	}
@@ -54,6 +57,9 @@ public class StudentService {
 
 		log.setEmail(staffes.getEmail());
 		log.setPassword(staffes.getPassword());
+		log.setUserId(staffes.getStaId());
+		log.setRole("Staff");
+
 		loginRepository.save(log);
 		return "POST";
 	}
@@ -70,7 +76,9 @@ public class StudentService {
 			Map<Object, Object> data = new HashMap<Object, Object>();
 			data.put("Token", token);
 			data.put("message", "Logged in successfully");
-		//	System.out.println(token);
+			data.put("UserId", UserLogin.getUserId());
+			data.put("Role", UserLogin.getRole());
+			System.out.println(token);
 			apiRespons.setData(data);
 			return apiRespons;
 		} else {

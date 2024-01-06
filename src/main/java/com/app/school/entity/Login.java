@@ -22,8 +22,14 @@ public class Login {
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "log_id")
+	@Column(name = "id")
 	private UUID id;
+	
+	@Column(name = "user_id")
+	private String userId;
+
+	@Column(name = "role")
+	private String role;
 	
 	@Column(name = "log_email")
 	private String email;

@@ -1,5 +1,8 @@
 package com.app.school.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,14 +56,13 @@ public class StudentController {
 	@ApiOperation(value = "Allows to  Token Verify")
 	public ResponseEntity<APIResponse> verify(@RequestHeader(value = "Authorization") String auth) throws Exception{
 		APIResponse apiResponse=new APIResponse();
-		
+		Map<String, Object> response = new HashMap<String, Object>();
 		jwtUtil.verify(auth);
 		apiResponse.setStatus(HttpStatus.OK.value());
 		apiResponse.setData("Token Verify");
 		
+		
 		return ResponseEntity.status(apiResponse.getStatus()).body(apiResponse);
 	
 	}
-	
-	
 }

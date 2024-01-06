@@ -21,8 +21,11 @@ public class Student {
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "stu_id")
+	@Column(name = "id")
 	private UUID id;
+	
+	@Column(name = "stu_id")
+	private String stuId;
 	
 	@Column(name = "stu_email")
 	private String email;

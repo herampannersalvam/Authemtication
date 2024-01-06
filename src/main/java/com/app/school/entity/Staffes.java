@@ -21,8 +21,11 @@ public class Staffes {
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "sta_id")
+	@Column(name = "id")
 	private UUID id;
+	
+	@Column(name = "sta_id")
+	private String staId;
 	
 	@Column(name = "sta_email")
 	private String email;
